@@ -1,0 +1,26 @@
+.shahvats-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 800px;
+    background-color: #FAAC58;
+    border: 3px solid red;
+}
+
+.white-field {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+.black-field {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
+
+.row {
+    display: flex;
+}
