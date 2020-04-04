@@ -1,19 +1,45 @@
 import React, {Component} from 'react';
 import '../styles/dashboard.css'
 
+const whiteKing = require('../images/white-king.png');
+const whiteQueen = require('../images/white-queen.png');
+const whiteOfficer = require('../images/white-officer.png');
+const whiteHorse = require('../images/white-horse.png');
+const whiteElephant = require('../images/white-elephant.png');
+const whitePawn = require('../images/white-pawn.png');
+
 class ShahvatsDashboard extends Component {
+
+
+
+  clickField = (event) => {
+    event.target.classList.toggle('active-square')
+    console.log(event.target);
+  };
   render() {
     return (
       <div className="shahvats-dashboard">
         <div className='row'>
-          <div id='8a' className='white-field'></div>
-          <div id='8b' className='black-field'></div>
-          <div id='8c' className='white-field'></div>
-          <div id='8d' className='black-field'></div>
-          <div id='8e' className='white-field'></div>
-          <div id='8f' className='black-field'></div>
-          <div id='8g' className='white-field'></div>
-          <div id='8h' className='black-field'></div>
+          <div id='8a' className='white-field' onClick={this.clickField}>
+            <img src={whiteKing}/>
+          </div>
+          <div id='8b' className='black-field' onClick={this.clickField}>
+            <img src={whiteQueen}/>
+          </div>
+          <div id='8c' className='white-field' onClick={this.clickField}>
+            <img src={whiteOfficer}/>
+          </div>
+          <div id='8d' className='black-field' onClick={this.clickField}>
+            <img src={whiteHorse}/>
+          </div>
+          <div id='8e' className='white-field' onClick={this.clickField}>
+            <img src={whiteElephant}/>
+          </div>
+          <div id='8f' className='black-field' onClick={this.clickField}>
+            <img src={whitePawn}/>
+          </div>
+          <div id='8g' className='white-field' onClick={this.clickField}></div>
+          <div id='8h' className='black-field' onClick={this.clickField}></div>
         </div>
         <div className='row'>
           <div id='7a' className='black-field'></div>
@@ -85,7 +111,6 @@ class ShahvatsDashboard extends Component {
           <div id='1g' className='black-field'></div>
           <div id='1h' className='white-field'></div>
         </div>
-
       </div>
     );
   }

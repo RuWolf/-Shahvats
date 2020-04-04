@@ -5,22 +5,30 @@
     align-items: center;
     width: 800px;
     height: 800px;
-    background-color: #FAAC58;
-    border: 3px solid red;
+    border: 3px solid black;
 }
 
 .white-field {
     width: 100px;
     height: 100px;
-    background-color: white;
+    background-color: #F3E2A9;
 }
 
 .black-field {
     width: 100px;
     height: 100px;
-    background-color: black;
+    background-color: rgb(152 118 84);
 }
 
 .row {
     display: flex;
+}
+
+.active-square {
+    background-color: red;
+}
+
+img {
+    width: 100px;
+    height: 100px;
 }
