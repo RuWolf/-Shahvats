@@ -19,123 +19,183 @@ class ShahvatsDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: 'black',
+      color: 'white',
       activeFigure: null,
-      position: [
-        {address: 'a8', value: blackElephant, color: 'white-field'},
-        {address: 'b1', value: blackHorse, color: 'black-field'},
-        {address: 'c8', value: blackOfficer, color: 'white-field'},
-        {address: 'd8', value: blackQueen, color: 'black-field'},
-        {address: 'e8', value: blackKing, color: 'white-field'},
-        {address: 'f8', value: blackOfficer, color: 'black-field'},
-        {address: 'g8', value: blackHorse, color: 'white-field'},
-        {address: 'h8', value: blackElephant, color: 'black-field'},
-        {address: 'a7', value: blackPawn, color: 'black-field'},
-        {address: 'b7', value: blackPawn, color: 'white-field'},
-        {address: 'c7', value: blackPawn, color: 'black-field'},
-        {address: 'd7', value: blackPawn, color: 'white-field'},
-        {address: 'e7', value: blackPawn, color: 'black-field'},
-        {address: 'f7', value: blackPawn, color: 'white-field'},
-        {address: 'g7', value: blackPawn, color: 'black-field'},
-        {address: 'h7', value: blackPawn, color: 'white-field'},
-        {address: 'a6', value: '', color: 'white-field'},
-        {address: 'b6', value: '', color: 'black-field'},
-        {address: 'c6', value: '', color: 'white-field'},
-        {address: 'd6', value: '', color: 'black-field'},
-        {address: 'e6', value: '', color: 'white-field'},
-        {address: 'f6', value: '', color: 'black-field'},
-        {address: 'g6', value: '', color: 'white-field'},
-        {address: 'h6', value: '', color: 'black-field'},
-        {address: 'a5', value: '', color: 'black-field'},
-        {address: 'b5', value: '', color: 'white-field'},
-        {address: 'c5', value: '', color: 'black-field'},
-        {address: 'd5', value: '', color: 'white-field'},
-        {address: 'e5', value: '', color: 'black-field'},
-        {address: 'f5', value: '', color: 'white-field'},
-        {address: 'g5', value: '', color: 'black-field'},
-        {address: 'h5', value: '', color: 'white-field'},
-        {address: 'a4', value: '', color: 'white-field'},
-        {address: 'b4', value: '', color: 'black-field'},
-        {address: 'c4', value: '', color: 'white-field'},
-        {address: 'd4', value: '', color: 'black-field'},
-        {address: 'e4', value: '', color: 'white-field'},
-        {address: 'f4', value: '', color: 'black-field'},
-        {address: 'g4', value: '', color: 'white-field'},
-        {address: 'h4', value: '', color: 'black-field'},
-        {address: 'a3', value: '', color: 'black-field'},
-        {address: 'b3', value: '', color: 'white-field'},
-        {address: 'c3', value: '', color: 'black-field'},
-        {address: 'd3', value: '', color: 'white-field'},
-        {address: 'e3', value: '', color: 'black-field'},
-        {address: 'f3', value: '', color: 'white-field'},
-        {address: 'g3', value: '', color: 'black-field'},
-        {address: 'h3', value: '', color: 'white-field'},
-        {address: 'a2', value: whitePawn, color: 'white-field'},
-        {address: 'b2', value: whitePawn, color: 'black-field'},
-        {address: 'c2', value: whitePawn, color: 'white-field'},
-        {address: 'd2', value: whitePawn, color: 'black-field'},
-        {address: 'e2', value: whitePawn, color: 'white-field'},
-        {address: 'f2', value: whitePawn, color: 'black-field'},
-        {address: 'g2', value: whitePawn, color: 'white-field'},
-        {address: 'h2', value: whitePawn, color: 'black-field'},
-        {address: 'a1', value: whiteElephant, color: 'black-field'},
-        {address: 'b1', value: whiteHorse, color: 'white-field'},
-        {address: 'c1', value: whiteOfficer, color: 'black-field'},
-        {address: 'd1', value: whiteQueen, color: 'white-field'},
-        {address: 'e1', value: whiteKing, color: 'black-field'},
-        {address: 'f1', value: whiteOfficer, color: 'white-field'},
-        {address: 'g1', value: whiteHorse, color: 'black-field'},
-        {address: 'h1', value: whiteElephant, color: 'white-field'}
-      ]
+      activeAddress: null,
+      a8: blackElephant,
+      b8: blackHorse,
+      c8: blackOfficer,
+      d8: blackQueen,
+      e8: blackKing,
+      f8: blackOfficer,
+      g8: blackHorse,
+      h8: blackElephant,
+      a7: blackPawn,
+      b7: blackPawn,
+      c7: blackPawn,
+      d7: blackPawn,
+      e7: blackPawn,
+      f7: blackPawn,
+      g7: blackPawn,
+      h7: blackPawn,
+      a6: '',
+      b6: '',
+      c6: '',
+      d6: '',
+      e6: '',
+      f6: '',
+      g6: '',
+      h6: '',
+      a5: '',
+      b5: '',
+      c5: '',
+      d5: '',
+      e5: '',
+      f5: '',
+      g5: '',
+      h5: '',
+      a4: '',
+      b4: '',
+      c4: '',
+      d4: '',
+      e4: '',
+      f4: '',
+      g4: '',
+      h4: '',
+      a3: '',
+      b3: '',
+      c3: '',
+      d3: '',
+      e3: '',
+      f3: '',
+      g3: '',
+      h3: '',
+      a2: whitePawn,
+      b2: whitePawn,
+      c2: whitePawn,
+      d2: whitePawn,
+      e2: whitePawn,
+      f2: whitePawn,
+      g2: whitePawn,
+      h2: whitePawn,
+      a1: whiteElephant,
+      b1: whiteHorse,
+      c1: whiteOfficer,
+      d1: whiteQueen,
+      e1: whiteKing,
+      f1: whiteOfficer,
+      g1: whiteHorse,
+      h1: whiteElephant,
     }
   }
 
   clickField = (event) => {
     if (!this.state.activeFigure) {
-      if (event.target.alt === this.state.color) {
-        event.target.classList.toggle('active-square');
-        console.log(event.target)
-        this.setState({activeFigure: event.target.src})
+      let colorFigure = this.state[event.target.alt].substr(14, 5);
+      if (colorFigure === this.state.color) {
+        event.target.classList.add('active-square');
+        this.setState({activeFigure: this.state[event.target.alt]});
+        this.setState({activeAddress: event.target.alt})
       }
     } else {
-      // let position2Active = this.state.position.find(item => item.address === event.target.id);
-      // position2Active.value = this.state.activeFigure;
-      // this.setState({activeFigure:null});
-      console.log(this.state.activeFigure);
-      let newPosition = this.state.position;
-      newPosition.map(pos =>
-        pos.address === event.target.id ?
-          pos.value = this.state.activeFigure:
-          pos
-      );
-      console.log(newPosition);
+      document.querySelector(`#${this.state.activeAddress}`).classList.remove('active-square');
+      this.setState({[this.state.activeAddress]: null})
+      this.setState({[event.target.id]: this.state.activeFigure})
+      this.setState({activeAddress: null})
       this.setState({activeFigure: null});
-      // this.setState({position:newPosition});
     }
   };
 
   showField = (color) => {
     let result = [];
     let colorFigure;
+    let arrayField = [
+      ['a8', 'white-field'],
+      ['b8', 'black-field'],
+      ['c8', 'white-field'],
+      ['d8', 'black-field'],
+      ['e8', 'white-field'],
+      ['f8', 'black-field'],
+      ['g8', 'white-field'],
+      ['h8', 'black-field'],
+      ['a7', 'black-field'],
+      ['b7', 'white-field'],
+      ['c7', 'black-field'],
+      ['d7', 'white-field'],
+      ['e7', 'black-field'],
+      ['f7', 'white-field'],
+      ['g7', 'black-field'],
+      ['h7', 'white-field'],
+      ['a6', 'white-field'],
+      ['b6', 'black-field'],
+      ['c6', 'white-field'],
+      ['d6', 'black-field'],
+      ['e6', 'white-field'],
+      ['f6', 'black-field'],
+      ['g6', 'white-field'],
+      ['h6', 'black-field'],
+      ['a5', 'black-field'],
+      ['b5', 'white-field'],
+      ['c5', 'black-field'],
+      ['d5', 'white-field'],
+      ['e5', 'black-field'],
+      ['f5', 'white-field'],
+      ['g5', 'black-field'],
+      ['h5', 'white-field'],
+      ['a4', 'white-field'],
+      ['b4', 'black-field'],
+      ['c4', 'white-field'],
+      ['d4', 'black-field'],
+      ['e4', 'white-field'],
+      ['f4', 'black-field'],
+      ['g4', 'white-field'],
+      ['h4', 'black-field'],
+      ['a3', 'black-field'],
+      ['b3', 'white-field'],
+      ['c3', 'black-field'],
+      ['d3', 'white-field'],
+      ['e3', 'black-field'],
+      ['f3', 'white-field'],
+      ['g3', 'black-field'],
+      ['h3', 'white-field'],
+      ['a2', 'white-field'],
+      ['b2', 'black-field'],
+      ['c2', 'white-field'],
+      ['d2', 'black-field'],
+      ['e2', 'white-field'],
+      ['f2', 'black-field'],
+      ['g2', 'white-field'],
+      ['h2', 'black-field'],
+      ['a1', 'black-field'],
+      ['b1', 'white-field'],
+      ['c1', 'black-field'],
+      ['d1', 'white-field'],
+      ['e1', 'black-field'],
+      ['f1', 'white-field'],
+      ['g1', 'black-field'],
+      ['h1', 'white-field'],
+    ];
 
     if (color === 'white') {
       for (let i = 0; i < 64; i = i + 8) {
         let row = [];
         for (let j = i; j < i + 8; j++) {
-          if (this.state.position[j].value) {
-            colorFigure = this.state.position[j].value.substr(14, 5);
+          if (this.state[arrayField[j][0]]) {
+            console.log(this.state[arrayField[j][0]].substr(14, 5));
+            colorFigure = this.state[arrayField[j][0]].substr(14, 5);
             row.push(
-              <div key={this.state.position[j].address}
-                   id={this.state.position[j].address}
-                   className={this.state.position[j].color}
+              <div key={arrayField[j][0]}
+                   id={arrayField[j][0]}
+                   className={arrayField[j][1]}
                    onClick={this.clickField}>
-                <img src={this.state.position[j].value} alt={colorFigure}/>
+                <img src={this.state[arrayField[j][0]]} alt={arrayField[j][0]}/>
               </div>)
           } else {
             row.push(
-              <div key={this.state.position[j].address}
-                   id={this.state.position[j].address}
-                   className={this.state.position[j].color}
+              <div key={arrayField[j][0]}
+                   id={arrayField[j][0]}
+                   alt={arrayField[j][0]}
+                   className={arrayField[j][1]}
                    onClick={this.clickField}>
               </div>)
           }
