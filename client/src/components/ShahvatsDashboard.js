@@ -19,7 +19,7 @@ class ShahvatsDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: 'white',
+      color: 'black',
       activeFigure: null,
       activeAddress: null,
       a8: blackElephant,
@@ -108,7 +108,6 @@ class ShahvatsDashboard extends Component {
 
   showField = (color) => {
     let result = [];
-    let colorFigure;
     let arrayField = [
       ['a8', 'white-field'],
       ['b8', 'black-field'],
@@ -181,8 +180,6 @@ class ShahvatsDashboard extends Component {
         let row = [];
         for (let j = i; j < i + 8; j++) {
           if (this.state[arrayField[j][0]]) {
-            console.log(this.state[arrayField[j][0]].substr(14, 5));
-            colorFigure = this.state[arrayField[j][0]].substr(14, 5);
             row.push(
               <div key={arrayField[j][0]}
                    id={arrayField[j][0]}
@@ -211,18 +208,20 @@ class ShahvatsDashboard extends Component {
       for (let i = 63; i >= 0; i = i - 8) {
         let rowblack = [];
         for (let j = i; j > i - 8; j--) {
-          if (this.state.position[j].value) {
-            colorFigure = this.state.position[j].value.substr(14, 5);
+          if (this.state[arrayField[j][0]]) {
             rowblack.push(
-              <div key={this.state.position[j].address} id={this.state.position[j].address}
-                   className={this.state.position[j].color}
+              <div key={arrayField[j][0]}
+                   id={arrayField[j][0]}
+                   className={arrayField[j][1]}
                    onClick={this.clickField}>
-                <img src={this.state.position[j].value} alt={colorFigure}/>
+                <img src={this.state[arrayField[j][0]]} alt={arrayField[j][0]}/>
               </div>)
           } else {
             rowblack.push(
-              <div key={this.state.position[j].address} id={this.state.position[j].address}
-                   className={this.state.position[j].color}
+              <div key={arrayField[j][0]}
+                   id={arrayField[j][0]}
+                   alt={arrayField[j][0]}
+                   className={arrayField[j][1]}
                    onClick={this.clickField}>
               </div>)
           }
