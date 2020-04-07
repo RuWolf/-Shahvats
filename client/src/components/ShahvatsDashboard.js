@@ -19,7 +19,7 @@ class ShahvatsDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: 'black',
+      color: 'white',
       activeFigure: null,
       activeAddress: null,
       a8: blackElephant,
@@ -91,16 +91,22 @@ class ShahvatsDashboard extends Component {
 
   clickField = (event) => {
     if (!this.state.activeFigure) {
-      let colorFigure = this.state[event.target.alt].substr(14, 5);
-      if (colorFigure === this.state.color) {
-        event.target.classList.add('active-square');
-        this.setState({activeFigure: this.state[event.target.alt]});
-        this.setState({activeAddress: event.target.alt})
+      try {
+        let colorFigure = this.state[event.target.alt].substr(14, 5);
+        if (colorFigure === this.state.color) {
+          event.target.classList.add('active-square');
+          this.setState({activeFigure: this.state[event.target.alt]});
+          this.setState({activeAddress: event.target.alt})
+        }
+      } catch (e) {
+        console.log('клик не по белой фигуре')
       }
+
     } else {
       document.querySelector(`#${this.state.activeAddress}`).classList.remove('active-square');
       this.setState({[this.state.activeAddress]: null})
-      this.setState({[event.target.id]: this.state.activeFigure})
+      let address = event.target.id || event.target.alt
+      this.setState({[address]: this.state.activeFigure})
       this.setState({activeAddress: null})
       this.setState({activeFigure: null});
     }
