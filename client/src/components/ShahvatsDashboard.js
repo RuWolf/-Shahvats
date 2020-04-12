@@ -99,16 +99,20 @@ class ShahvatsDashboard extends Component {
           this.setState({activeAddress: event.target.alt})
         }
       } catch (e) {
-        console.log('клик не по белой фигуре')
+        console.log('клик не по фигуре своего цвета')
       }
 
     } else {
       document.querySelector(`#${this.state.activeAddress}`).classList.remove('active-square');
-      this.setState({[this.state.activeAddress]: null})
       let address = event.target.id || event.target.alt
-      this.setState({[address]: this.state.activeFigure})
+      let colorFigure = this.state[address].substr(14, 5);
+      if (colorFigure !== this.state.color) {
+        console.log('tyt')
+        this.setState({[address]: this.state.activeFigure})
+        this.setState({[this.state.activeAddress]: null})
+      }
       this.setState({activeAddress: null})
-      this.setState({activeFigure: null});
+      this.setState({activeFigure: null})
     }
   };
 
@@ -244,7 +248,6 @@ class ShahvatsDashboard extends Component {
   };
 
   render() {
-
     return (
       <div className="shahvats-dashboard">
         {this.showField(this.state.color)}
