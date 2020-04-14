@@ -17,12 +17,17 @@ app.use(
   })
 );
 
-app.use('/api', require('./router/inquiry'));
+app.use('/api', require('./router/register'));
 
 const PORT = config.get('port') || 5000;
 
 async function start() {
   try {
+    const mongoose = require("mongoose");
+    mongoose.connect(`mongodb+srv://qwer:${config.get('pass')}@cluster0-cqhkf.mongodb.net/test?retryWrites=true&w=majority`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
   } catch (e) {
     console.log('Server error, ', e.message);
