@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
 import '../styles/login.css'
 
-class Login extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
       nickValue: '',
-      passValue: '',
-      isLogin: false
+      passValue: ''
     }
   }
 
@@ -21,7 +19,7 @@ class Login extends Component {
   };
 
   sendData = async () => {
-    const response = await fetch('/api/login', {
+    const response = await fetch('/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -30,13 +28,10 @@ class Login extends Component {
       })
     });
     const result = await response.json();
-    this.setState({isLogin:result.login})
+    console.log(result)
   };
 
   render() {
-    if (this.state.isLogin) {
-      return <Redirect to={'/profile'} />
-    }
     return (
       <div className="login-container">
         <div className="login-nick">
@@ -53,4 +48,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Registration;
