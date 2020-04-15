@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import 'antd/dist/antd.css';
 import ShahvatsDashboard from "./components/ShahvatsDashboard";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
+import Profile from "./components/Profile"
 
 function App() {
   return (
@@ -12,7 +12,8 @@ function App() {
       <Switch>
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Registration} />
-        <Route exact path={"/profile"} component={ShahvatsDashboard} />
+        <Route exact path={"/game"} component={ShahvatsDashboard} />
+        <Route exact path={"/profile"} component={Profile} />
       </Switch>
     </Router>
   );

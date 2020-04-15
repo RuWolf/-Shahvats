@@ -3,7 +3,6 @@ const cors = require('cors');
 const config = require('config');
 const bodyParser = require("body-parser");
 
-
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -18,6 +17,7 @@ app.use(
 );
 
 app.use('/api', require('./router/register'));
+app.use('/api', require('./router/profile'));
 
 const PORT = config.get('port') || 5000;
 

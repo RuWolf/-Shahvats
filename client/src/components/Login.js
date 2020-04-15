@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
 import '../styles/login.css'
+import {Redirect} from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -23,19 +23,20 @@ class Login extends Component {
   sendData = async () => {
     const response = await fetch('/api/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         nick: this.state.nickValue,
         password: this.state.passValue
       })
     });
     const result = await response.json();
-    this.setState({isLogin:result.login})
+    this.setState({isLogin: result.login});
+    localStorage.setItem('nick', this.state.nickValue)
   };
 
   render() {
     if (this.state.isLogin) {
-      return <Redirect to={'/profile'} />
+      return <Redirect to={'/profile'}/>
     }
     return (
       <div className="login-container">
