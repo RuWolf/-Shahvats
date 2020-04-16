@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './styles/index.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ShahvatsDashboard from "./components/ShahvatsDashboard";
 import Login from "./components/Login";
@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path={"/login"} component={Login} />
+        <Route exact path={"/"} component={Login} />
         <Route exact path={"/register"} component={Registration} />
         <Route exact path={"/game"} component={ShahvatsDashboard} />
         <Route exact path={"/profile"} component={Profile} />

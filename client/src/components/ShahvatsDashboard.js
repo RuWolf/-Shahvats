@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../styles/dashboard.css'
+import '../styles/project/components/dashboard.css'
 
 const whiteKing = require('../images/white-king.png');
 const whiteQueen = require('../images/white-queen.png');

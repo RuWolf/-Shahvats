@@ -3,8 +3,10 @@ const router = Router();
 const User = require('../models/user');
 
 router.post('/login', async (req, res) => {
+  console.log(req.body)
   const {nick, password} = req.body;
   const user = await User.findOne({nick});
+  console.log(user)
 
   if (user && (user.password === password)) {
     res.json({login: true})
