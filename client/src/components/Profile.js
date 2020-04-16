@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
+import '../styles/project/components/profile.css'
 
 class Profile extends Component {
   constructor(props) {
@@ -34,8 +35,9 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <input className="login-input" type="text" value={this.state.nickValue} onChange={this.handleChangeNick}/>
-        <button onClick={this.newGame}>Начать игру</button>
+        <input className="game shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" value={this.state.nickValue} onChange={this.handleChangeNick}/>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={this.newGame}>Начать игру</button>
       </div>
     );
   }
