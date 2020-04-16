@@ -1,4 +1,6 @@
 const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const schema = require('./schema/schema')
 const cors = require('cors');
 const config = require('config');
 const bodyParser = require("body-parser");
@@ -18,6 +20,10 @@ app.use(
 
 app.use('/api', require('./router/register'));
 app.use('/api', require('./router/profile'));
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true,
+}));
 
 const PORT = config.get('port') || 5000;
 
@@ -27,6 +33,7 @@ async function start() {
     mongoose.connect(`mongodb+srv://qwer:${config.get('pass')}@cluster0-cqhkf.mongodb.net/test?retryWrites=true&w=majority`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true
     });
     app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
   } catch (e) {

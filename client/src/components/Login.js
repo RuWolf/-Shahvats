@@ -67,9 +67,9 @@ class Login extends Component {
               onClick={this.sendData}>
               Sign In
             </button>
-            <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-              Forgot Password?
-            </a>
+            {/*<a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">*/}
+            {/*  Forgot Password?*/}
+            {/*</a>*/}
           </div>
         </form>
         <p className="text-center text-gray-500 text-xs">

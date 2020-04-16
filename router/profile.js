@@ -5,24 +5,25 @@ const Game = require('../models/game');
 
 
 router.post('/newGame', async (req, res) => {
-  const {nickYour,nickPartner } = req.body;
+  console.log('tyt')
+  const {nickYour, nickPartner} = req.body;
   const positions = {
-    a8: blackElephant,
-    b8: blackHorse,
-    c8: blackOfficer,
-    d8: blackQueen,
-    e8: blackKing,
-    f8: blackOfficer,
-    g8: blackHorse,
-    h8: blackElephant,
-    a7: blackPawn,
-    b7: blackPawn,
-    c7: blackPawn,
-    d7: blackPawn,
-    e7: blackPawn,
-    f7: blackPawn,
-    g7: blackPawn,
-    h7: blackPawn,
+    a8: 'blackElephant',
+    b8: 'blackHorse',
+    c8: 'blackOfficer',
+    d8: 'blackQueen',
+    e8: 'blackKing',
+    f8: 'blackOfficer',
+    g8: 'blackHorse',
+    h8: 'blackElephant',
+    a7: 'blackPawn',
+    b7: 'blackPawn',
+    c7: 'blackPawn',
+    d7: 'blackPawn',
+    e7: 'blackPawn',
+    f7: 'blackPawn',
+    g7: 'blackPawn',
+    h7: 'blackPawn',
     a6: '',
     b6: '',
     c6: '',
@@ -55,33 +56,36 @@ router.post('/newGame', async (req, res) => {
     f3: '',
     g3: '',
     h3: '',
-    a2: whitePawn,
-    b2: whitePawn,
-    c2: whitePawn,
-    d2: whitePawn,
-    e2: whitePawn,
-    f2: whitePawn,
-    g2: whitePawn,
-    h2: whitePawn,
-    a1: whiteElephant,
-    b1: whiteHorse,
-    c1: whiteOfficer,
-    d1: whiteQueen,
-    e1: whiteKing,
-    f1: whiteOfficer,
-    g1: whiteHorse,
-    h1: whiteElephant,
-  }
-
-  console.log(nickYour);
-  console.log(nickPartner);
+    a2: 'whitePawn',
+    b2: 'whitePawn',
+    c2: 'whitePawn',
+    d2: 'whitePawn',
+    e2: 'whitePawn',
+    f2: 'whitePawn',
+    g2: 'whitePawn',
+    h2: 'whitePawn',
+    a1: 'whiteElephant',
+    b1: 'whiteHorse',
+    c1: 'whiteOfficer',
+    d1: 'whiteQueen',
+    e1: 'whiteKing',
+    f1: 'whiteOfficer',
+    g1: 'whiteHorse',
+    h1: 'whiteElephant',
+  };
 
   let you = await User.find({nickYour});
-  let partner = await User.find({nickPartner})
+  let partner = await User.find({nickPartner});
 
-  const game = new Game({positions:[], white: nickYour, black: nickPartner})
-
-
+  const game = new Game({positions, white: nickYour, black: nickPartner});
+  console.log(game)
+  try {
+    await game.save();
+    res.json({data: game})
+  } catch (e) {
+    console.log(e);
+    res.json({data: false})
+  }
 });
 
 module.exports = router;
