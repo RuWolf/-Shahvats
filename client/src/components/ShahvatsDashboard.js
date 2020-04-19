@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/project/components/dashboard.css'
+import { connectStoreon } from 'storeon/react'
 
 const whiteKing = require('../images/white-king.png');
 const whiteQueen = require('../images/white-queen.png');
@@ -239,7 +240,6 @@ class ShahvatsDashboard extends Component {
         )
       }
     }
-
     return result;
   };
 
@@ -253,4 +253,4 @@ class ShahvatsDashboard extends Component {
   }
 }
 
-export default ShahvatsDashboard;
+export default connectStoreon(ShahvatsDashboard);

@@ -6,7 +6,8 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickValue: ''
+      nickValue: '',
+      toDashboard: false
     }
   }
 
@@ -29,11 +30,15 @@ class Profile extends Component {
       })
     });
     const result = await response.json();
-    console.log(result)
-    // this.setState({isLogin: result.login})
+    if (result.data) {
+      this.setState({toDashboard: true})
+    }
   };
 
   render() {
+    if (this.state.toDashboard) {
+      return <Redirect to={'/game'}/>
+    }
     return (
       <div>
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
